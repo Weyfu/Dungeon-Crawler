@@ -1,0 +1,65 @@
+# --- Visual Studio User-Specific Files & Folders ---
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+
+# --- C++ Build & Output Directories ---
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]in/
+[Oo]bj/
+build/
+out/
+
+# --- Visual C++ Intermediate / Cache Files ---
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+ipch/
+
+# --- Compiled Object & Static Libraries ---
+*.obj
+*.ilk
+*.iobj
+*.ipdb
+*.lib
+*.a
+*.la
+*.lai
+*.lo
+*.slo
+
+# --- Compiled Dynamic Libraries & Executables ---
+*.dll
+*.exe
+*.pdb
+*.exp
+*.map
+*.so
+*.dylib
+
+# --- Precompiled Headers ---
+*.pch
+*.gch
+
+# --- Diagnostic & Log Files ---
+*.log
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+*.idb
+
+# --- Visual Studio Profiler & Code Analysis ---
+*.psess
+*.vsp
+*.vspx
+*.sap
+*.CodeAnalysisLog.xml
