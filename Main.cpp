@@ -155,11 +155,11 @@ int weaponDamage(WeaponType weapon)
 	case Yamato:
 		return 20;
 	case RedditGold:
-		return 10;
+		return 15;
 	case Lollipop:
 		return 15;
 	case QingMing:
-		return 20;
+		return 15;
 	}
 }
 
@@ -212,9 +212,9 @@ void specialAttack(Character& attacker, Character& target)
 		return;
 	}
 	
-	int critical = rand() % 100;
+	int specialattack = rand() % 100;
 
-	if (critical < 20)
+	if (specialattack < 20)
 	{
 		cout << attacker.name << " couldn't use their Special.\n";
 		return;
@@ -263,7 +263,7 @@ string specialName(SpecialType special)
 	switch (special)
 	{
 	case BigSwing:
-		return "Big Swing"
+		return "Big Swing";
 
 	case StarburstStream:
 		return "Starburst Stream";
@@ -289,11 +289,7 @@ void debuff(Character& character)
 {
 	int debuffAmount = rand() % 50 + 1;
 
-
 	character.damageModifier -= debuffAmount;
-
-	if (character.health < 0)
-		character.health = 0;
 
 	cout << character.name << " got nerfed to the ground for "
 		<< debuffAmount << " damage!" << endl;
@@ -389,7 +385,7 @@ int main()
 
 int stage = 1;
 
-	while (stage <= 3 && player.health > 0)
+	while (stage <= 100 && player.health > 0)
 	{
 		Character enemy = createEnemy(stage);
 
@@ -460,11 +456,11 @@ int stage = 1;
 
 		int effectChance = rand() % 100;
 
-		if (effectChance < 5)
+		if (effectChance < 25)
 		{
 			buff(enemy);
 		}
-		else if (effectChance < 2)
+		else if (effectChance < 20)
 		{
 			debuff(player);
 		}
@@ -472,7 +468,7 @@ int stage = 1;
 		Attack(enemy, player);
 
 
-		if (stage > 3 && player.health > 0)
+		if (stage > 100 && player.health > 0)
 		{
 			cout << "\nYou escaped all of New Eridu, Japan!" << endl;
 		}
