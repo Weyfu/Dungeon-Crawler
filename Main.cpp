@@ -1,13 +1,12 @@
 /// variables, conditionals, loops, switches std::strings std::cin/cout
-/// structs, classes
+/// structs, classes, now we have arrays happy happy happy
 /// enums
 // turn based combat
 // text based
 // 3 encounters to "escape" or death to all of japan
 #include <iostream>
-#include <string>
-#include <cstdlib>
-#include <ctime>
+#include <string> 
+#include <cstdlib> // for rand
 using namespace std;
 
 enum WeaponType
@@ -23,7 +22,7 @@ enum WeaponType
 enum SpecialType
 {
 	BigSwing,
-	StarburstStream, // who is a beta tester
+	VorpalStrike, // who is a beta tester
 	JudgementCut // PROVOOOOOKINGGG
 };
 
@@ -41,31 +40,38 @@ struct Item
 };
 
 
+string weaponNames[] =		// this is big brain array to implement
+{
+	"Wooden Sword",
+	"Elucidator",
+	"Yamato",
+	"Reddit Gold",
+	"Lollipop",
+	"QingMing"
+};
+
 string weaponName(WeaponType weapon)
 {
-	switch (weapon)
-	{
-	case WoodenSword:
-		return "Wooden Sword";
-
-	case Elucidator:
-		return "Elucidator";
-
-	case Yamato:
-		return "Yamato"; // BLACK CLOUDS IN ISOLATION
-
-	case RedditGold:
-		return "Reddit Gold";
-
-	case Lollipop:
-		return "Lollipop";
-
-	case QingMing:
-		return "QingMing";
-	}
-
-	return "Unknown Weapon";
+	return weaponNames[weapon];
 }
+
+string specialName(SpecialType special) // return better name instead of boring name
+{
+	switch (special)
+	{
+	case BigSwing:
+		return "Big Swing";
+
+	case VorpalStrike:
+		return "Vorpal Strike";
+
+	case JudgementCut:
+		return "Judgement Cut";
+
+		return "Unknown Special";
+	}
+}
+
 
 SpecialType weaponSpecial(WeaponType weapon)
 {
@@ -75,12 +81,12 @@ SpecialType weaponSpecial(WeaponType weapon)
 		return BigSwing;
 
 	case Elucidator:
-		return StarburstStream;
+		return VorpalStrike;
 
 	case Yamato:
 		return JudgementCut;
 
-		return StarburstStream;
+		return BigSwing;
 	}
 }
 
@@ -97,6 +103,7 @@ public:
 	int specialCooldown;
 	WeaponType weapon;
 	EnemyType enemyType;
+
 
 	Character (WeaponType wpn)
 	{
@@ -120,7 +127,7 @@ public:
 			name = "Redditor";
 			health = 100;
 			level = 1;
-			weapon = RedditGold;
+			weapon = RedditGold; // you deserve it twin
 			damageModifier = 0;
 			break;
 
@@ -128,7 +135,7 @@ public:
 			name = "Chud";
 			health = 200;
 			level = 2;
-			weapon = Lollipop;
+			weapon = Lollipop; // idk they get a lollipop
 			damageModifier = 0;
 			break;
 
@@ -136,7 +143,7 @@ public:
 			name = "Yi Xuan";
 			health = 300;
 			level = 3;
-			weapon = QingMing;
+			weapon = QingMing; // no not the bird
 			damageModifier = 0;
 			break;
 		}
@@ -144,38 +151,34 @@ public:
 
 };
 
+int weaponDamages[] =		// this is big brain array to implement
+{
+	10, // WoodenSword
+	15, // Elucidator
+	20, // Yamato
+	15, // RedditGold
+	15, // Lollipop
+	15  // QingMing
+};
+
 int weaponDamage(WeaponType weapon)
 {
-	switch (weapon)
-	{
-	case WoodenSword:
-		return 10;
-	case Elucidator:
-		return 15;
-	case Yamato:
-		return 20;
-	case RedditGold:
-		return 15;
-	case Lollipop:
-		return 15;
-	case QingMing:
-		return 15;
-	}
+	return weaponDamages[weapon];   /// HOW WILL I KNOW THE DAMAGE NUMBER IF THERE IS NO NUMBER
 }
+
+
+int specialDamages[] =
+{
+	25, // Big Swing
+	50, // Vorpal Strike
+	80, // Judgement Cut
+};
+
 
 int specialDamage(WeaponType weapon)
 {
-	switch (weapon)
-	{
-	case WoodenSword:
-		return 25;
-	case Elucidator:
-		return 50;
-	case Yamato:
-		return 80;
-	}
+	return specialDamages[weapon];
 }
-
 
 void Attack(Character& attacker, Character& target)
 {
@@ -229,17 +232,17 @@ void specialAttack(Character& attacker, Character& target)
 	switch (special)
 	{
 	case BigSwing:
-		cout << attacker.name << " takes a big swing!\n";
+		cout << attacker.name << " triple t swing\n";
 		target.health -= 30;
 		break;
 
-	case StarburstStream:
-		cout << attacker.name << " used Starburst Stream!\n";
+	case VorpalStrike:
+		cout << attacker.name << " STARRRRBURRSST STREAAAMMMMMUUUUUU!!!!\n";
 		target.health -= 50;
 		break;
 
 	case JudgementCut:
-		cout << attacker.name << " used Judgement Cut!\n";
+		cout << attacker.name << " Kneel before me!\n";
 		target.health -= 80;
 		break;
 
@@ -250,7 +253,7 @@ void specialAttack(Character& attacker, Character& target)
 
 	cout << attacker.name << " has "
 		<< attacker.specialUses
-		<< " Special Uses remaining.\n";
+		<< " Special Uses remaining.\n";    /// no more spamming cuz we hate you
 
 	if (target.health < 0)
 		target.health = 0;
@@ -258,26 +261,9 @@ void specialAttack(Character& attacker, Character& target)
 	cout << target.name << " has " << target.health << " HP remaining.\n";
 }
 
-string specialName(SpecialType special)
-{
-	switch (special)
-	{
-	case BigSwing:
-		return "Big Swing";
-
-	case StarburstStream:
-		return "Starburst Stream";
-
-	case JudgementCut:
-		return "Judgement Cut";
-
-		return "Unknown Special";
-	}
-}
-
 void buff(Character& character)
 {
-	int buffAmount = rand() % 50 + 1;
+	int buffAmount = rand() % 50 + 1; // up to 50
 
 	character.damageModifier += buffAmount;
 
@@ -287,15 +273,13 @@ void buff(Character& character)
 
 void debuff(Character& character)
 {
-	int debuffAmount = rand() % 50 + 1;
+	int debuffAmount = rand() % 50 + 1; // up to 50
 
 	character.damageModifier -= debuffAmount;
 
 	cout << character.name << " got nerfed to the ground for "
 		<< debuffAmount << " damage!" << endl;
 }
-
-
 
 Item potion
 {
@@ -310,18 +294,18 @@ void usePotion(Character& player, Item potion)
 		player.health += potion.healthback;
 
 		cout << player.name << " Drinks 1 "
-			<< potion.name << " and restores "
+			<< potion.name << " and gets "
 			<< potion.healthback << " health!" << endl;
 	}
 	else if (player.potionUses == 0)
 	{
 
-		cout << player.name <<  " has no Potions left" << endl;
+		cout << player.name <<  " has no Estus Flasks left." << endl; /// no more spamming
 
 	}
 	else if (player.health > 50)
 	{
-		cout << player.name << " Is too full to restore their Health." << endl;
+		cout << player.name << " Does not feel the need to drink an Estus Flask." << endl;
 	}
 	else
 		return;
@@ -379,7 +363,7 @@ int main()
 	}
 
 	Character player(playerWeapon);
-	cout << "\n------------------" << endl;
+	cout << "\n------------------" << endl; //// ouuuu you can use \n cuz next lineeeeee
 	cout << "Your Weapon is now a " << weaponName(player.weapon) << endl;
 	cout << "------------------" << endl;
 
@@ -393,7 +377,7 @@ int stage = 1;
 		cout << "\n--------------------" << endl;
 
 		cout << "WAVE " << stage << endl;
-		cout << enemy.name << " approaches!" << endl;
+		cout << enemy.name << " has entered the Battlefield!" << endl;
 		cout << "----------------------" << endl;
 
 		while (player.health > 0 && enemy.health > 0)
@@ -407,14 +391,15 @@ int stage = 1;
 		cout << enemy.name << " HP: " << enemy.health << endl;
 		cout << "--------------------" << endl;
 
-		cout << "\nYour turn!" << endl;
+		cout << "\nIt is now your Turn!" << endl;
 		cout << "1. Swing your " << weaponName(player.weapon) << endl;
-		cout << "2. Use " << specialName(weaponSpecial(player.weapon)) << endl; //gets name of the special, checks weapon tied to the weapon, checks the player weapon
-		cout << "3. Drink a Health Potion" << endl;
+		cout << "2. Use " << specialName(weaponSpecial(player.weapon)) << endl;
+		cout << "3. Drink a Estus Flask" << endl;
 		cout << "4. Buff yourself" << endl;
 		cout << "5. Debuff enemy" << endl;
 		cout << "6-9. Do nothing" << endl;
 		cout << "Choose: ";
+
 		cin >> action;
 
 		if (action == 1)
@@ -446,15 +431,17 @@ int stage = 1;
 
 		if (enemy.health <= 0)
 		{
-			cout << enemy.name << " has been defeated!" << endl;
+			cout << enemy.name << " is death the deathly of all deaths." << endl;
 			stage++;
 		}
 
+		//////////////////////////////////////////////////////// 
 
-
-		cout << "\nEnemy's turn!" << endl;
+		cout << "\nIt's the Enemy's Turn" << endl;
 
 		int effectChance = rand() % 100;
+
+
 
 		if (effectChance < 25)
 		{
@@ -473,12 +460,12 @@ int stage = 1;
 			cout << "\nYou escaped all of New Eridu, Japan!" << endl;
 		}
 
-
 		if (player.health <= 0)
 		{
-			cout << player.name << " was Vanquished!" << endl;
+			cout << player.name << " has died, YOU SUCK MR. PLAYER!" << endl;
 			break;
 		}
+
 		}
 
 	 }
