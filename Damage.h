@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Weapon.h"
+#include "Color.h"
 using namespace std;
 
 
@@ -81,24 +82,31 @@ void specialAttack(Character& attacker, Character& target)
 	switch (special)
 	{
 	case BigSwing:
+		setColor(8);
 		cout << attacker.name << " says triple t swing!" << " And deals the damage of " << damage << endl;
 		target.health -= 30;
+		setColor(7);
 		break;
 
 	case VorpalStrike:
+		setColor(11);
 		cout << attacker.name << " says STARRRRBURRSST STREAAAMMMMMUUUUUU!!!!" << " And deals the damage of " << damage << endl;
 		target.health -= 50;
+		setColor(7);
 		break;
 
 	case JudgementCut:
+		setColor(9);
 		cout << attacker.name << " says Kneel before me!" << " And deals the damage of " << damage << endl;
 		target.health -= 80;
+		setColor(7);
 		break;
 
 	}
 
 	attacker.specialUses--;
 
+	setColor(14);
 	cout << attacker.name << " has "
 		<< attacker.specialUses
 		<< " Special Uses remaining.\n";    /// no more spamming cuz we hate you
@@ -106,6 +114,7 @@ void specialAttack(Character& attacker, Character& target)
 	if (target.health < 0)
 		target.health = 0;
 
+	setColor(2);
 	cout << target.name << " has " << target.health << " HP remaining.\n";
 }
 
@@ -118,13 +127,15 @@ void buff(Character& character)
 	{
 		character.damageModifier += buffAmount;
 
+		setColor(6);
 		cout << character.name << " blessed by rngesus for "
 			<< buffAmount << " damage!" << endl;
-
+		setColor(4);
 		character.buffUses--;
 	}
 	else
 	{
+		setColor(4);
 		cout << character.name << " Cannot Buff themselves anymore." << endl;
 	}
 
@@ -138,7 +149,7 @@ void debuff(Character& character)
 	if (character.debuffUses > 0)
 	{
 		character.damageModifier -= debuffAmount;
-
+		setColor(5);
 		cout << character.name << " got nerfed to the ground for "
 			<< debuffAmount << " damage!" << endl;
 
@@ -146,6 +157,7 @@ void debuff(Character& character)
 	}
 	else
 	{
+		setColor(4);
 		cout << character.name << " cannot nerf their opponent." << endl;
 	}
 }

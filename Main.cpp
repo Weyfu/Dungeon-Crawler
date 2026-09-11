@@ -9,17 +9,13 @@
 #include <ctime>
 #include <cstdlib> // for rand
 #include "Character.h"
-#include <windows.h>
 #include "Item.h"
 #include "Weapon.h"
 #include "Damage.h"
 #include "Difficulty.h"
-using namespace std;
+#include "Color.h"
 
-void setColor(int color)
-{
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
-}
+
 
 int main()
 { 
@@ -116,10 +112,9 @@ int stage = 1;
 		Character enemy = createEnemy(stage, difficulty);
 
 
+		setColor(9);
 		cout << "\n--------------------" << endl;
-
 		cout << "WAVE " << stage << endl;
-
 		cout << enemy.name << " has entered the Battlefield!" << endl;
 		cout << "----------------------" << endl;
 
@@ -128,12 +123,12 @@ int stage = 1;
 		{
 
 		int action;
-
+		setColor(10);
 		cout << "\n--------------------" << endl;
 		cout << player.name << " HP: " << player.health << endl;
 		cout << enemy.name << " HP: " << enemy.health << endl;
 		cout << "--------------------" << endl;
-
+		setColor(14);
 		cout << "\nIt is now your Turn!" << endl;
 		cout << "1. Swing your " << weaponName(player.weapon) << endl;
 		cout << "2. Use " << specialName(weaponSpecial(player.weapon)) << endl;
@@ -141,6 +136,8 @@ int stage = 1;
 		cout << "4. Use a Buff Spell" << endl;
 		cout << "5. Curse the Enemies entire Bloodline" << endl;
 		cout << "6-9. Do nothing" << endl;
+		setColor(7);
+
 		cout << "Choose: ";
 
 		cin >> action;
@@ -157,7 +154,10 @@ int stage = 1;
 		else if (action == 3)
 		{
 			usePotion(player, potion);
+			setColor(10);
 			cout << "Your current health is now: " << player.health << endl;
+			setColor(7);
+
 		}
 		else if (action == 4)
 		{
@@ -169,12 +169,16 @@ int stage = 1;
 		}
 		else
 		{
+			setColor(8);
 			cout << "You do nothing." << endl;
+			setColor(7);
+
 		}
 
 
 		if (enemy.health > 0)
 		{
+			setColor(12);
 			cout << "\nIt's the Enemy's Turn" << endl;
 
 			int effectChance = rand() % 100;
@@ -189,11 +193,14 @@ int stage = 1;
 			}
 
 			Attack(enemy, player);
+
+			setColor(7);
 		}
 
 
 		if (enemy.health <= 0)
 		{
+			setColor(12);
 			cout << enemy.name << " is death the deathly of all deaths." << endl;
 			stage++;
 			player.potionUses++;
@@ -201,18 +208,27 @@ int stage = 1;
 			player.debuffUses++;
 			player.specialUses++;
 			player.score += 500;
+
+			setColor(7);
 		}
 
 
 		if (stage > 3 && player.health > 0)
 		{
+			setColor(3);
 			cout << "\nYou escaped all of New Eridu, Japan!" << " and achieved a score of " << player.score << endl;
+			setColor(7);
+
 		}
 
 		if (player.health <= 0)
 		{
+
+			setColor(4);
 			cout << player.name << " has died, YOU SUCK MR. PLAYER!" << " Your score was " << player.score << endl;
 			break;
+			setColor(7);
+
 		}
 
 		}
