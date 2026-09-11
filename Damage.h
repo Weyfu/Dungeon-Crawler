@@ -119,25 +119,41 @@ void specialAttack(Character& attacker, Character& target)
 
 void buff(Character& character)
 {
-	int buffAmount = rand() % 50 + 1; // up to 50
+	int buffAmount = rand() % 100 + 1; 
 
 
-	if (character.damageModifier > 100)
-		character.damageModifier = 100;
+	if (character.buffUses > 0)
+	{
+		character.damageModifier += buffAmount;
 
-	character.damageModifier += buffAmount;
+		cout << character.name << " blessed by rngesus for "
+			<< buffAmount << " damage!" << endl;
 
-	cout << character.name << " blessed by rngesus for "
-		<< buffAmount << " damage!" << endl;
+		character.buffUses--;
+	}
+	else
+	{
+		cout << character.name << " Cannot Buff themselves anymore." << endl;
+	}
+
 }
 
 void debuff(Character& character)
 {
-	int debuffAmount = rand() % 50 + 1; // up to 50
-
-	character.damageModifier -= debuffAmount;
+	int debuffAmount = rand() % 100 + 1; 
 
 
-	cout << character.name << " got nerfed to the ground for "
-		<< debuffAmount << " damage!" << endl;
+	if (character.debuffUses > 0)
+	{
+		character.damageModifier -= debuffAmount;
+
+		cout << character.name << " got nerfed to the ground for "
+			<< debuffAmount << " damage!" << endl;
+
+		character.debuffUses--;
+	}
+	else
+	{
+		cout << character.name << " cannot nerf their opponent." << endl;
+	}
 }

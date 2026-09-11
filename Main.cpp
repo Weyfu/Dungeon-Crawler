@@ -26,10 +26,10 @@ int main()
 
 	int difficultyChoice;
 
-	cout << "\nChoose your difficulty:" << endl;
-	cout << "1. Easy" << endl;
-	cout << "2. Normal" << endl;
-	cout << "3. Legend" << endl;
+	cout << "\nHow would you like to Suffer?:" << endl;
+	cout << "1. Go easy on me Baby." << endl;
+	cout << "2. I can take it." << endl;
+	cout << "3. Let's play rough." << endl;
 	cout << "Choice: ";
 	cin >> difficultyChoice;
 
@@ -85,7 +85,7 @@ int stage = 1;
 
 
 
-	while (stage <= 100 && player.health > 0)
+	while (stage <= 3 && player.health > 0)
 	{
 		Character enemy = createEnemy(stage, difficulty);
 
@@ -152,11 +152,11 @@ int stage = 1;
 
 			int effectChance = rand() % 100;
 
-			if (effectChance < 25)
+			if (effectChance < 45)
 			{
 				buff(enemy);
 			}
-			else if (effectChance < 45)
+			else if (effectChance < 25)
 			{
 				debuff(player);
 			}
@@ -172,7 +172,7 @@ int stage = 1;
 		}
 
 
-		if (stage > 100 && player.health > 0)
+		if (stage > 3 && player.health > 0)
 		{
 			cout << "\nYou escaped all of New Eridu, Japan!" << endl;
 		}

@@ -23,6 +23,8 @@ public:
 	int specialUses;
 	int potionUses;
 	int specialCooldown;
+	int buffUses;
+	int debuffUses;
 	WeaponType weapon;
 	EnemyType enemyType;
 
@@ -34,8 +36,10 @@ public:
 		level = 1;
 		weapon = wpn;
 		damageModifier = 0;
-		specialUses = 3;
-		potionUses = 5;
+		specialUses = 5;
+		buffUses = 5;
+		debuffUses = 5;
+		potionUses = 10;
 		specialCooldown = 0;
 	}
 
@@ -51,6 +55,8 @@ public:
 			level = 1;
 			weapon = RedditGold; // you deserve it twin
 			damageModifier = 0;
+			buffUses = 3;
+			debuffUses = 3;
 			break;
 
 		case Chud:
@@ -59,6 +65,8 @@ public:
 			level = 2;
 			weapon = Lollipop; // idk they get a lollipop
 			damageModifier = 0;
+			buffUses = 3;
+			debuffUses = 3;
 			break;
 
 		case YiXuan:
@@ -67,6 +75,8 @@ public:
 			level = 3;
 			weapon = QingMing; // no not the bird
 			damageModifier = 0;
+			buffUses = 3;
+			debuffUses = 3;
 			break;
 		}
 	}

@@ -34,6 +34,7 @@ Character createEnemy(int stage, Difficulty difficulty)
 	{
 		enemy.health = enemy.health -= 50;
 		enemy.damageModifier -= 20;
+		
 	}
 	else if (difficulty == Normal)
 	{
@@ -45,6 +46,7 @@ Character createEnemy(int stage, Difficulty difficulty)
 	{
 		enemy.health = enemy.health * 5;
 		enemy.damageModifier += 20;
+		
 	}
 
 	return enemy;
