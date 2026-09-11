@@ -64,13 +64,6 @@ void specialAttack(Character& attacker, Character& target)
 		return;
 	}
 
-	if (attacker.specialCooldown > 0)
-	{
-		cout << attacker.name << "'s Special is on cooldown for "
-			<< attacker.specialCooldown << " more turn(s)!\n";
-		return;
-	}
-
 	int specialattack = rand() % 100;
 
 	if (specialattack < 20)
@@ -88,24 +81,23 @@ void specialAttack(Character& attacker, Character& target)
 	switch (special)
 	{
 	case BigSwing:
-		cout << attacker.name << " triple t swing\n";
+		cout << attacker.name << " says triple t swing!" << " And deals the damage of " << damage << endl;
 		target.health -= 30;
 		break;
 
 	case VorpalStrike:
-		cout << attacker.name << " STARRRRBURRSST STREAAAMMMMMUUUUUU!!!!\n";
+		cout << attacker.name << " says STARRRRBURRSST STREAAAMMMMMUUUUUU!!!!" << " And deals the damage of " << damage << endl;
 		target.health -= 50;
 		break;
 
 	case JudgementCut:
-		cout << attacker.name << " Kneel before me!\n";
+		cout << attacker.name << " says Kneel before me!" << " And deals the damage of " << damage << endl;
 		target.health -= 80;
 		break;
 
 	}
 
 	attacker.specialUses--;
-	attacker.specialCooldown--;
 
 	cout << attacker.name << " has "
 		<< attacker.specialUses
@@ -119,7 +111,7 @@ void specialAttack(Character& attacker, Character& target)
 
 void buff(Character& character)
 {
-	int buffAmount = rand() % 100 + 1; 
+	int buffAmount = rand() % 15 + 1; 
 
 
 	if (character.buffUses > 0)
@@ -140,7 +132,7 @@ void buff(Character& character)
 
 void debuff(Character& character)
 {
-	int debuffAmount = rand() % 100 + 1; 
+	int debuffAmount = rand() % 15 + 1; 
 
 
 	if (character.debuffUses > 0)

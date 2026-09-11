@@ -169,12 +169,17 @@ int stage = 1;
 		{
 			cout << enemy.name << " is death the deathly of all deaths." << endl;
 			stage++;
+			player.potionUses++;
+			player.buffUses++;
+			player.debuffUses++;
+			player.specialUses++;
+			player.score += 500;
 		}
 
 
 		if (stage > 3 && player.health > 0)
 		{
-			cout << "\nYou escaped all of New Eridu, Japan!" << endl;
+			cout << "\nYou escaped all of New Eridu, Japan!" << " and achieved a score of " << player.score << endl;
 		}
 
 		if (player.health <= 0)

@@ -16,7 +16,7 @@ struct Item
 Item potion
 {
 	"Estus Flask",
-	50
+	100
 };
 
 void usePotion(Character& player, Item potion)
@@ -28,6 +28,9 @@ void usePotion(Character& player, Item potion)
 		cout << player.name << " Drinks 1 "
 			<< potion.name << " and gets "
 			<< potion.healthback << " health!" << endl;
+
+		player.potionUses--;
+		player.score - 150;
 	}
 	else if (player.potionUses == 0)
 	{
@@ -42,7 +45,10 @@ void usePotion(Character& player, Item potion)
 	else
 		return;
 
-	player.potionUses--;
+
+	cout << player.name << " has "
+		<< player.potionUses
+		<< " Drops of Estus left.\n";    /// no more spamming cuz we hate you
 
 
 }

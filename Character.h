@@ -22,9 +22,9 @@ public:
 	int level;
 	int specialUses;
 	int potionUses;
-	int specialCooldown;
 	int buffUses;
 	int debuffUses;
+	int score;
 	WeaponType weapon;
 	EnemyType enemyType;
 
@@ -40,7 +40,7 @@ public:
 		buffUses = 5;
 		debuffUses = 5;
 		potionUses = 10;
-		specialCooldown = 0;
+		score = 0;
 	}
 
 	Character(EnemyType type)
