@@ -43,14 +43,15 @@ void Attack(Character& attacker, Character& target)
 
 	if (chance < 20)
 	{
-		cout << attacker.name << " Missed their Attack!" << endl;
+		setColor(6);
+		cout << attacker.name << " Whiffed and did no damage." << endl;
 		return;
 	}
 
 	int damage = weaponDamage(attacker.weapon) + attacker.damageModifier;
 
 	target.health -= damage;
-
+	setColor(4);
 	cout << attacker.name << " attacks "
 		<< target.name << " for "
 		<< damage << " damage!" << endl;
@@ -120,7 +121,7 @@ void specialAttack(Character& attacker, Character& target)
 
 void buff(Character& character)
 {
-	int buffAmount = rand() % 15 + 1; 
+	int buffAmount = rand() % 50 + 1; 
 
 
 	if (character.buffUses > 0)
@@ -143,7 +144,7 @@ void buff(Character& character)
 
 void debuff(Character& character)
 {
-	int debuffAmount = rand() % 15 + 1; 
+	int debuffAmount = rand() % 50 + 1; 
 
 
 	if (character.debuffUses > 0)
