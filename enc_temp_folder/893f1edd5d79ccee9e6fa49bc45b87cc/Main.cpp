@@ -100,9 +100,9 @@ int main()
 		break;
 	}
 
+	setColor(15);
 
 	Character player(playerWeapon);
-	setColor(14);
 	cout << "\n------------------" << endl; //// ouuuu you can use \n cuz next lineeeeee
 	cout << "Your Weapon is now a " << weaponName(player.weapon) << endl;
 	cout << "------------------" << endl;
@@ -119,7 +119,6 @@ int stage = 1;
 		cout << "\n--------------------" << endl;
 
 		cout << "WAVE " << stage << endl;
-
 		cout << enemy.name << " has entered the Battlefield!" << endl;
 		cout << "----------------------" << endl;
 
