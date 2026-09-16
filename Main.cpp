@@ -14,13 +14,16 @@
 #include "Damage.h"
 #include "Difficulty.h"
 #include "Color.h"
+#include "ScoreBoard.h"
+
 
 
 
 int main()
 { 
-
 	srand(time(0));
+
+	int score = 0;
 
 	int choice;
 
@@ -207,7 +210,7 @@ int stage = 1;
 			player.buffUses++;
 			player.debuffUses++;
 			player.specialUses++;
-			player.score += 500;
+			score += 500;
 
 			setColor(7);
 		}
@@ -216,7 +219,7 @@ int stage = 1;
 		if (stage > 3 && player.health > 0)
 		{
 			setColor(3);
-			cout << "\nYou escaped all of New Eridu, Japan!" << " and achieved a score of " << player.score << endl;
+			cout << "\nYou escaped all of New Eridu, Japan!" << " and achieved a score of " << score << endl;
 			setColor(7);
 
 		}
@@ -225,7 +228,7 @@ int stage = 1;
 		{
 
 			setColor(4);
-			cout << player.name << " has died, YOU SUCK MR. PLAYER!" << " Your score was " << player.score << endl;
+			cout << player.name << " has died, YOU SUCK MR. PLAYER!" << " Your score was " << score << endl;
 			break;
 			setColor(7);
 

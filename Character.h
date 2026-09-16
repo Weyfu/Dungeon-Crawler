@@ -24,7 +24,6 @@ public:
 	int potionUses;
 	int buffUses;
 	int debuffUses;
-	int score;
 	WeaponType weapon;
 	EnemyType enemyType;
 
@@ -40,7 +39,6 @@ public:
 		buffUses = 5;
 		debuffUses = 5;
 		potionUses = 10;
-		score = 0;
 	}
 
 	Character(EnemyType type)

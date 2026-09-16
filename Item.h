@@ -3,7 +3,8 @@
 #include <iostream>
 #include <string> 
 #include "Color.h"
-
+#include "Scoreboard.h"
+extern int score;
 using namespace std;
 
 
@@ -24,6 +25,7 @@ Item potion
 
 void usePotion(Character& player, Item potion)
 {
+
 	if (player.health < 50)
 	{
 		player.health += potion.healthback;
@@ -34,7 +36,7 @@ void usePotion(Character& player, Item potion)
 			<< potion.healthback << " health!" << endl;
 
 		player.potionUses--;
-		player.score - 150;
+		score -= 150;
 	}
 	else if (player.potionUses == 0)
 	{

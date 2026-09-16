@@ -4,7 +4,7 @@
 #include <string> 
 #include "Character.h"
 using namespace std;
-
+extern int score;
 
 enum WeaponType
 {

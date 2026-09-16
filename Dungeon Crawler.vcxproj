@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ScoreBoard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
