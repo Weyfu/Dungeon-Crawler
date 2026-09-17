@@ -75,7 +75,7 @@ void specialAttack(Character& attacker, Character& target)
 		return;
 	}
 
-	int damage = specialDamage(attacker.weapon);
+	int damage = specialDamage(attacker.weapon) + attacker.specialdamageModifier;
 
 	target.health -= damage;
 
@@ -128,6 +128,7 @@ void buff(Character& character)
 	if (character.buffUses > 0)
 	{
 		character.damageModifier += buffAmount;
+		character.specialdamageModifier += buffAmount;
 
 		setColor(6);
 		cout << character.name << " blessed by rngesus for "
@@ -151,6 +152,7 @@ void debuff(Character& character)
 	if (character.debuffUses > 0)
 	{
 		character.damageModifier -= debuffAmount;
+		character.specialdamageModifier -= debuffAmount;
 		setColor(5);
 		cout << character.name << " got nerfed to the ground for "
 			<< debuffAmount << " damage!" << endl;

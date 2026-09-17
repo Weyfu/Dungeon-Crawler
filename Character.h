@@ -18,6 +18,7 @@ class Character
 public:
 	string name;
 	int damageModifier;
+	int specialdamageModifier;
 	int health;
 	int level;
 	int specialUses;
@@ -35,6 +36,7 @@ public:
 		level = 1;
 		weapon = wpn;
 		damageModifier = 0;
+		specialdamageModifier = 0;
 		specialUses = 5;
 		buffUses = 5;
 		debuffUses = 5;
