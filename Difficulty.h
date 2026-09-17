@@ -48,7 +48,7 @@ Character createEnemy(int stage, Difficulty difficulty)
 	}
 	else if (difficulty == Legend)
 	{
-		enemy.health = enemy.health * 2.5;
+		enemy.health = enemy.health * 2.0;
 		enemy.damageModifier += 10;
 		
 	}

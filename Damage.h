@@ -45,7 +45,7 @@ void Attack(Character& attacker, Character& target)
 	if (chance < 20)
 	{
 		setColor(6);
-		cout << attacker.name << " Whiffed and did no damage." << endl;
+		cout << attacker.name << " Whiffed and did no damage." << endl; // thats bad aim
 		return;
 	}
 

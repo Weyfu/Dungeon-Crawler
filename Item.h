@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-struct Item
+struct estusFlask
 {
 	string name;
 	int healthback;
@@ -16,13 +16,13 @@ struct Item
 
 
 
-Item potion
+estusFlask potion
 {
 	"Estus Flask",
 	100
 };
 
-void usePotion(Character& player, Item potion)
+void usePotion(Character& player, estusFlask potion)
 {
 
 	if (player.health < 50)
