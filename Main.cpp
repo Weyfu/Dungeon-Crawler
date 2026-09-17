@@ -5,6 +5,7 @@
 // text based
 // 3 encounters to "escape" or death to all of japan
 #include <iostream>
+#include <fstream>
 #include <string> 
 #include <ctime>
 #include <cstdlib> // for rand
@@ -21,9 +22,10 @@
 
 int main()
 { 
-	srand(time(0));
 
 	int score = 0;
+
+	srand(time(0));
 
 	int choice;
 
@@ -48,6 +50,7 @@ int main()
 	{
 	case 1:
 		difficulty = Easy;
+		score / 2;
 		break;
 
 	case 2:
@@ -56,12 +59,14 @@ int main()
 
 	case 3:
 		difficulty = Legend;
+		score * 2;
 		break;
 
 	default:
 		setColor(4);
 		cout << "ok then have at it" << endl;
 		difficulty = Legend;
+		score * 2;
 		break;
 	}
 
@@ -82,10 +87,12 @@ int main()
 	{
 	case 1:
 		playerWeapon = WoodenSword;
+		score * 3;
 		break;
 
 	case 2:
 		playerWeapon = Elucidator;
+		score * 2;
 		break;
 
 	case 3:
@@ -96,6 +103,7 @@ int main()
 		setColor(8);
 		cout << "tung tung tung sahur is calling your name." << endl;
 		playerWeapon = WoodenSword;
+		score * 3;
 		break;
 	}
 
@@ -148,27 +156,32 @@ int stage = 1;
 		if (action == 1)
 		{
 			Attack(player, enemy);
+			score += 50;
 		}
 
 		else if (action == 2)
 		{
 			specialAttack(player, enemy);
+			score += 100;
 		}
 		else if (action == 3)
 		{
 			usePotion(player, potion);
 			setColor(10);
 			cout << "Your current health is now: " << player.health << endl;
+			score -= 100;
 			setColor(7);
 
 		}
 		else if (action == 4)
 		{
 			buff(player);
+			score += 25;
 		}
 		else if (action == 5)
 		{
 			debuff(enemy);
+			score += 25;
 		}
 		else
 		{
@@ -205,6 +218,10 @@ int stage = 1;
 		{
 			setColor(12);
 			cout << enemy.name << " is death the deathly of all deaths." << endl;
+
+			setColor(10);
+			cout << player.name << " Refreshed their Potions and Abilities by 1" << endl;
+
 			stage++;
 			player.potionUses++;
 			player.buffUses++;
@@ -219,17 +236,65 @@ int stage = 1;
 		if (stage > 3 && player.health > 0)
 		{
 			setColor(3);
-			cout << "\nYou escaped all of New Eridu, Japan!" << " and achieved a score of " << score << endl;
+			
+			int highScore = 0;
+			ifstream inFile("highscore.txt");
+
+			if (inFile.is_open())
+			{
+				inFile >> highScore;
+				inFile.close();
+			}
+
+			cout << "\nYou escaped all of New Eridu, Japan!" << " and achieved a score of " << score <<  endl;
+
+			if (score > highScore)
+			{
+				cout << "NEW HIGH SCORE!" << endl;
+				ofstream outFile("highscore.txt");
+				outFile << score;
+				outFile.close();
+			}
+			else
+			{
+				cout << "Your high score is still " << highScore << endl;
+			}
+
 			setColor(7);
+
+
 
 		}
 
 		if (player.health <= 0)
 		{
 
+			int highScore = 0;
+			ifstream inFile("highscore.txt");
+
+			if (inFile.is_open())
+			{
+				inFile >> highScore;
+				inFile.close();
+			}
+
 			setColor(4);
 			cout << player.name << " has died, YOU SUCK MR. PLAYER!" << " Your score was " << score << endl;
+
+
+			if (score > highScore)
+			{
+				cout << "NEW HIGH SCORE!" << endl;
+				ofstream outFile("highscore.txt");
+				outFile << score;
+				outFile.close();
+			}
+			else
+			{
+				cout << "Your high score is still " << highScore << endl;
+			}
 			break;
+
 			setColor(7);
 
 		}
