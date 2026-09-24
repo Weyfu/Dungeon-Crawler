@@ -24,6 +24,16 @@ int main()
 { 
 
 	int score = 0;
+	
+	const string GAME_TITLE = "YaTuza: Like a Programmer";
+
+	int BeginningChoice;
+
+	cout << "-------------------------" << endl;
+	cout << GAME_TITLE << endl;
+	cout << "-------------------------" << endl;
+
+
 
 	srand(time(0));
 
@@ -34,13 +44,13 @@ int main()
 	int difficultyChoice;
 
 	setColor(14);
-	cout << "\nHow would you like to Suffer?:" << endl;
+	cout << "\nChoose your Difficulty: " << endl;
 	setColor(2);
-	cout << "1. Go easy on me Baby." << endl;
+	cout << "1. Normal" << endl;
 	setColor(6);
-	cout << "2. I can take it." << endl;
+	cout << "2. Hard" << endl;
 	setColor(4);
-	cout << "3. Let's play rough." << endl;
+	cout << "3. Legend." << endl;
 	setColor(15);
 	cout << "Choice: ";
 	cin >> difficultyChoice;
