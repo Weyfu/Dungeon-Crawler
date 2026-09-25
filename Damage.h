@@ -11,11 +11,11 @@ using namespace std;
 
 int weaponDamages[] =		// this is big brain array to implement
 {
-	10, // WoodenSword
-	15, // Elucidator
-	20, // Yamato
-	15, // RedditGold
-	15, // Lollipop
+	25, // Brawler Style
+	10, // Rush Style
+	40, // Beast Style
+	5, // RedditGold
+	10, // Lollipop
 	15  // QingMing
 };
 

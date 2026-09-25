@@ -8,7 +8,7 @@ using namespace std;
 
 
 
-struct estusFlask
+struct ToughnessEmperor
 {
 	string name;
 	int healthback;
@@ -16,13 +16,13 @@ struct estusFlask
 
 
 
-estusFlask potion
+ToughnessEmperor potion
 {
-	"Estus Flask",
+	"Toughness Emperor",
 	100
 };
 
-void usePotion(Character& player, estusFlask potion)
+void usePotion(Character& player, ToughnessEmperor potion)
 {
 
 	if (player.health < 50)
@@ -45,7 +45,7 @@ void usePotion(Character& player, estusFlask potion)
 	else if (player.health > 50)
 	{
 		setColor(8);
-		cout << player.name << " Does not feel the need to drink an Estus Flask." << endl;
+		cout << player.name << " Does not feel the need to drink a Toughness Emperor." << endl;
 	}
 	else
 		return;
