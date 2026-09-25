@@ -7,9 +7,9 @@ using namespace std;
 
 enum WeaponType
 {
-	WoodenSword,
-	Elucidator, // the black swordsman
-	Yamato, // I AM THE STORM THAT IS APPROACHING
+	Brawler, // SEIYA
+	Rush, // i am the epic dodge
+	Beast, // i take big damage
 	RedditGold,
 	Lollipop,
 	QingMing
@@ -18,17 +18,17 @@ enum WeaponType
 
 enum SpecialType
 {
-	BigSwing,
-	VorpalStrike, // who is a beta tester
-	JudgementCut // PROVOOOOOKINGGG
+	FinishingBlows,
+	RelentlessBarrage, // who is a beta tester
+	Torment // PROVOOOOOKINGGG
 };
 
 
 string weaponNames[] =		// this is big brain array to implement
 {
-	"Wooden Sword",
-	"Elucidator",
-	"Yamato",
+	"Brawler",
+	"Rush",
+	"Beast",
 	"Reddit Gold",
 	"Lollipop",
 	"QingMing"
@@ -43,14 +43,14 @@ string specialName(SpecialType special) // return better name instead of boring 
 {
 	switch (special)
 	{
-	case BigSwing:
-		return "Big Swing";
+	case FinishingBlows:
+		return "Essence of Finishing Blows";
 
-	case VorpalStrike:
-		return "Vorpal Strike";
+	case RelentlessBarrage:
+		return "Essence of Relentless Barrage";
 
-	case JudgementCut:
-		return "Judgement Cut";
+	case Torment:
+		return "Essence of the Beast: Torment";
 
 		return "Unknown Special";
 	}
@@ -61,15 +61,15 @@ SpecialType weaponSpecial(WeaponType weapon)
 {
 	switch (weapon)
 	{
-	case WoodenSword:
-		return BigSwing;
+	case Brawler:
+		return FinishingBlows;
 
-	case Elucidator:
-		return VorpalStrike;
+	case Rush:
+		return RelentlessBarrage;
 
-	case Yamato:
-		return JudgementCut;
+	case Beast:
+		return Torment;
 
-		return BigSwing;
+		return FinishingBlows;
 	}
 }

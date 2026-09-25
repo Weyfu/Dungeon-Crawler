@@ -50,9 +50,9 @@ void usePotion(Character& player, ToughnessEmperor potion)
 	else
 		return;
 	setColor(14);
-	cout << player.name << " has "
+	cout << player.name << " now has "
 		<< player.potionUses
-		<< " Drops of Estus left.\n";    /// no more spamming cuz we hate you
+		<< " Bottles of Toughness Emperor.\n";    /// no more spamming cuz we hate you
 
 
 }

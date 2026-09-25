@@ -1,12 +1,9 @@
 #pragma once
-
 #include <iostream>
 #include <string>
 #include "Weapon.h"
 #include "Color.h"
-
 using namespace std;
-
 
 
 int weaponDamages[] =		// this is big brain array to implement
@@ -14,9 +11,9 @@ int weaponDamages[] =		// this is big brain array to implement
 	25, // Brawler Style
 	10, // Rush Style
 	40, // Beast Style
-	5, // RedditGold
-	10, // Lollipop
-	15  // QingMing
+	10, // RedditGold
+	15, // Lollipop
+	20,  // QingMing
 };
 
 int weaponDamage(WeaponType weapon)
@@ -27,9 +24,9 @@ int weaponDamage(WeaponType weapon)
 
 int specialDamages[] =
 {
-	25, // Big Swing
-	50, // Vorpal Strike
-	80, // Judgement Cut
+	40, // Essence of Finishing Blows
+	35, // Essence of Relentless Barrage
+	80, // Essence of the Beast: Torment
 };
 
 
@@ -53,7 +50,7 @@ void Attack(Character& attacker, Character& target)
 
 	target.health -= damage;
 	setColor(4);
-	cout << attacker.name << " attacks "
+	cout << attacker.name << " hurts "
 		<< target.name << " for "
 		<< damage << " damage!" << endl;
 }
@@ -63,7 +60,7 @@ void specialAttack(Character& attacker, Character& target)
 
 	if (attacker.specialUses <= 0)
 	{
-		cout << attacker.name << " has no Special Uses left!\n";
+		cout << attacker.name << " has no Heat left!\n";
 		return;
 	}
 
@@ -71,7 +68,7 @@ void specialAttack(Character& attacker, Character& target)
 
 	if (specialattack < 20)
 	{
-		cout << attacker.name << " couldn't use their Special.\n";
+		cout << attacker.name << " couldn't use their Essence Move.\n";
 		return;
 	}
 
@@ -83,22 +80,22 @@ void specialAttack(Character& attacker, Character& target)
 
 	switch (special)
 	{
-	case BigSwing:
-		setColor(8);
-		cout << attacker.name << " says triple t swing!" << " And deals the damage of " << damage << endl;
+	case FinishingBlows:
+		setColor(1);
+		cout << attacker.name << " Runs up to their Opponent and Superman Punches them" << " dealing " << damage << " damage!" << endl;
 		target.health -= 30;
 		setColor(7);
 		break;
 
-	case VorpalStrike:
-		setColor(11);
-		cout << attacker.name << " says STARRRRBURRSST STREAAAMMMMMUUUUUU!!!!" << " And deals the damage of " << damage << endl;
+	case RelentlessBarrage:
+		setColor(13);
+		cout << attacker.name << " Punches their Opponent in the head, Gut punches them and kicks them in the Head for " << damage << " damage!" << endl;
 		target.health -= 50;
 		setColor(7);
 		break;
 
-	case JudgementCut:
-		setColor(9);
+	case Torment:
+		setColor(14);
 		cout << attacker.name << " says Kneel before me!" << " And deals the damage of " << damage << endl;
 		target.health -= 80;
 		setColor(7);

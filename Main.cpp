@@ -24,10 +24,12 @@ int main()
 { 
 
 	int score = 0;
-	
-	const string GAME_TITLE = "YaTuza: Like a Programmer";
-
 	int BeginningChoice;
+	int choice;
+	int difficultyChoice;
+	srand(time(0));
+
+	const string GAME_TITLE = "YaTuza: Like a Programmer";
 
 	cout << "-------------------------" << endl;
 	cout << GAME_TITLE << endl;
@@ -35,13 +37,9 @@ int main()
 
 
 
-	srand(time(0));
 
-	int choice;
 
 	Difficulty difficulty;
-
-	int difficultyChoice;
 
 	setColor(14);
 	cout << "\nChoose your Difficulty: " << endl;
@@ -80,39 +78,39 @@ int main()
 		break;
 	}
 
-	setColor(14);
-	cout << "Choose your Weapon: " << endl;
-	setColor(8);
-	cout << "1. Wooden Sword" << endl;
-	setColor(11);
-	cout << "2. Elucidator" << endl;
-	setColor(9);
-	cout << "3. Yamato" << endl;
 	setColor(15);
-	cout << "Selected Weapon: "; cin >> choice;
+	cout << "Choose your Fighting Style: " << endl;
+	setColor(1);
+	cout << "1. Brawler" << endl;
+	setColor(13);
+	cout << "2. Rush" << endl;
+	setColor(14);
+	cout << "3. Beast" << endl;
+	setColor(15);
+	cout << "Selected Style: "; cin >> choice;
 
 	WeaponType playerWeapon;
 	switch (choice)
 
 	{
 	case 1:
-		playerWeapon = WoodenSword;
+		playerWeapon = Brawler;
 		score * 3;
 		break;
 
 	case 2:
-		playerWeapon = Elucidator;
+		playerWeapon = Rush;
 		score * 2;
 		break;
 
 	case 3:
-		playerWeapon = Yamato;
+		playerWeapon = Beast;
 		break;
 
 	default:
 		setColor(8);
-		cout << "tung tung tung sahur is calling your name." << endl;
-		playerWeapon = WoodenSword;
+		cout << "It seems like have moves like a Brawler." << endl;
+		playerWeapon = Brawler;
 		score * 3;
 		break;
 	}
@@ -121,7 +119,7 @@ int main()
 	Character player(playerWeapon);
 	setColor(14);
 	cout << "\n------------------" << endl; //// ouuuu you can use \n cuz next lineeeeee
-	cout << "Your Weapon is now a " << weaponName(player.weapon) << endl;
+	cout << "Your Fighting Stance is now a " << weaponName(player.weapon) << endl;
 	cout << "------------------" << endl;
 
 int stage = 1;
@@ -151,10 +149,10 @@ int stage = 1;
 		cout << "--------------------" << endl;
 		setColor(14);
 		cout << "\nIt is now your Turn!" << endl;
-		cout << "1. Swing your " << weaponName(player.weapon) << endl;
+		cout << "1. Use " << weaponName(player.weapon) << endl;
 		cout << "2. Use " << specialName(weaponSpecial(player.weapon)) << endl;
-		cout << "3. Drink a Estus Flask" << endl;
-		cout << "4. Use a Buff Spell" << endl;
+		cout << "3. Drink a Toughness Emperor" << endl;
+		cout << "4. Use Power Surge" << endl;
 		cout << "5. Curse the Enemies entire Bloodline" << endl;
 		cout << "6-9. Do nothing" << endl;
 		setColor(7);
