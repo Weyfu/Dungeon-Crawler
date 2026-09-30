@@ -22,12 +22,12 @@
 
 int main()
 { 
-
 	int score = 0;
 	int BeginningChoice;
 	int choice;
 	int difficultyChoice;
 	srand(time(0));
+
 
 	const string GAME_TITLE = "YaTuza: Like a Programmer";
 

@@ -16,7 +16,7 @@ int weaponDamages[] =		// this is big brain array to implement
 	20,  // QingMing
 };
 
-int weaponDamage(WeaponType weapon)
+int weaponDamage(WeaponType& weapon)
 {
 	return weaponDamages[weapon];   /// HOW WILL I KNOW THE DAMAGE NUMBER IF THERE IS NO NUMBER
 }
@@ -30,7 +30,7 @@ int specialDamages[] =
 };
 
 
-int specialDamage(WeaponType weapon)
+int specialDamage(WeaponType& weapon)
 {
 	return specialDamages[weapon];
 }
