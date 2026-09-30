@@ -96,7 +96,7 @@ void specialAttack(Character& attacker, Character& target)
 
 	case Torment:
 		setColor(14);
-		cout << attacker.name << " says Kneel before me!" << " And deals the damage of " << damage << endl;
+		cout << attacker.name << " Breaks the arms of their Opponent and throws them " << " Dealing the Damage of " << damage << endl;
 		target.health -= 80;
 		setColor(7);
 		break;
