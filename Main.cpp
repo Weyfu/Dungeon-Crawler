@@ -29,8 +29,6 @@ int main()
 	int difficultyChoice;
 	srand(time(0));
 
-
-
 	const string GAME_TITLE = "YaTuza: Like a Programmer";
 
 	cout << "-------------------------" << endl;
