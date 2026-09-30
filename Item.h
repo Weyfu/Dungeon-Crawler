@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string> 
 #include "Color.h"
-#include "Scoreboard.h"
 using namespace std;
 
 

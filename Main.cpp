@@ -15,8 +15,6 @@
 #include "Damage.h"
 #include "Difficulty.h"
 #include "Color.h"
-#include "ScoreBoard.h"
-
 
 
 
@@ -149,7 +147,7 @@ int stage = 1;
 		cout << "--------------------" << endl;
 		setColor(14);
 		cout << "\nIt is now your Turn!" << endl;
-		cout << "1. Use " << weaponName(player.weapon) << endl;
+		cout << "1. Punch With " << weaponName(player.weapon) << endl;
 		cout << "2. Use " << specialName(weaponSpecial(player.weapon)) << endl;
 		cout << "3. Drink a Toughness Emperor" << endl;
 		cout << "4. Use Power Surge" << endl;
